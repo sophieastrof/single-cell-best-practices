@@ -488,6 +488,15 @@ With the reference files (the genome FASTA file and the gene annotation GTF file
 ### Simplified raw data processing pipeline
 
 [Simpleaf](https://github.com/COMBINE-lab/simpleaf) is designed to simplify the `alevin-fry` interface for single-cell and nucleus raw data processing. It encapsulates the whole processing pipeline into two steps:
+To run Simpleaf, please install the following: pyroe, alevin-fry, piscem, and salmon; 
+If on non-intel mac, remember to follow the steps above first, 
+conda activate af
+conda env config vars set CONDA_SUBDIR=osx-64
+then install packages:
+conda install -c bioconda salmon
+conda install -c bioconda pyroe
+conda install -c bioconda alevin-fry
+conda install -c bioconda piscem
 
 1. [`simpleaf index`](https://simpleaf.readthedocs.io/en/latest/index-command.html) indexes the provided reference or makes a _splici_ reference (<u>splic</u>ed transcripts + <u>i</u>ntrons) and index it.
 2. [`simpleaf quant`](https://simpleaf.readthedocs.io/en/latest/quant-command.html) maps the sequencing reads against the indexed reference and quantifies the mapping records to generate a gene count matrix.
@@ -509,6 +518,7 @@ simpleaf set-paths
 ## The -r read_lengh is the number of sequencing cycles performed by the sequencer to generate biological reads (read2 in Illumina).
 ## Publicly available datasets usually have the read length in the description. Sometimes they are called the number of cycles.
 simpleaf index \
+then copy all of the lines below into your shell window and press enter:
 -o simpleaf_index \
 -f toy_human_ref/fasta/genome.fa \
 -g toy_human_ref/genes/genes.gtf \
